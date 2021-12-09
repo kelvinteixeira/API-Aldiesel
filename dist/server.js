@@ -17,7 +17,7 @@ app.use(routes_1.default);
 app.listen(PORT, function () {
     console.log("Server is listening at http://localhost:" + PORT);
 });
-app.get('/ordemdeservicos', function (req, res) {
+app.get('/', function (req, res) {
     return res.json({
         message: 'API Aldisel, acesse a documentação digitando ao fim da barra de pesquisa api-docs'
     });

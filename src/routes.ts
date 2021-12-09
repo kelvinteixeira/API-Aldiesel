@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import OrdemDeServicoController from "./controllers/OrdemDeServicoController";
+import OrdemDeServicoController from './controllers/OrdemDeServicoController'
 
 const routes = Router()
 
