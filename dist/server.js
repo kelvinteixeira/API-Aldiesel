@@ -5,12 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var routes_1 = __importDefault(require("./routes"));
-// import cors from 'cors'
+var cors_1 = __importDefault(require("cors"));
 // import swaggerUi from 'swagger-ui-express'
 // import swaggerDocs from './swagger.json'
 var app = (0, express_1.default)();
 var PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
-// app.use(cors())
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(routes_1.default);
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
