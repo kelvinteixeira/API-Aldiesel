@@ -18,7 +18,7 @@ app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`)
 })
 
-app.get('/ordemdeservicos', (req, res) => {
+app.get('/', (req, res) => {
   return res.json({
     message: 'API Aldisel, acesse a documentação digitando ao fim da barra de pesquisa api-docs'
   })
