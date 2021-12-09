@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
-var OrdemDeservicoController_1 = __importDefault(require("./controllers/OrdemDeservicoController"));
+var OrdemDeServicoController_1 = __importDefault(require("./controllers/OrdemDeServicoController"));
 var routes = (0, express_1.Router)();
-routes.post('/ordemdeservicos', OrdemDeservicoController_1.default.create);
-routes.get('/ordemdeservicos', OrdemDeservicoController_1.default.list);
-routes.put('/ordemdeservicos/:id', OrdemDeservicoController_1.default.update);
-routes.delete('/ordemdeservicos/:id', OrdemDeservicoController_1.default.delete);
+routes.post('/ordemdeservicos', OrdemDeServicoController_1.default.create);
+routes.get('/ordemdeservicos', OrdemDeServicoController_1.default.list);
+routes.put('/ordemdeservicos/:id', OrdemDeServicoController_1.default.update);
+routes.delete('/ordemdeservicos/:id', OrdemDeServicoController_1.default.delete);
 exports.default = routes;
