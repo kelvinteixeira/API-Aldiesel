@@ -12,7 +12,7 @@ var app = (0, express_1.default)();
 var PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.use(routes_1.default);
+app.use('v1', routes_1.default);
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.listen(PORT, function () {
     console.log("Server is listening at http://localhost:" + PORT);
