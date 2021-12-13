@@ -73,21 +73,11 @@ exports.default = {
             });
         });
     },
-    find: function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var id, ordensDeServico;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        id = req.params.id;
-                        return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').where({ id: id })];
-                    case 1:
-                        ordensDeServico = _a.sent();
-                        return [2 /*return*/, res.status(200).json(ordensDeServico)];
-                }
-            });
-        });
-    },
+    // async find(req: Request, res: Response) {
+    //   const { id } = req.params
+    //   const ordensDeServico = await knex('ordem_de_servico').where({ id })
+    //   return res.status(200).json(ordensDeServico)
+    // },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var id, _a, nome_cliente, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, problema_descricao, data, ordensDeServico;

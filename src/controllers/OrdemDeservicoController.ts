@@ -13,15 +13,15 @@ export default {
   },
 
   async list(req: Request, res: Response) {
-    let ordensDeServicos =  await knex('ordem_de_servico').orderBy('id')
+    const ordensDeServicos =  await knex('ordem_de_servico').orderBy('id')
     return res.status(200).json( ordensDeServicos )
   },
 
-  async find(req: Request, res: Response) {
-    const { id } = req.params
-    const ordensDeServico = await knex('ordem_de_servico').where({ id })
-    return res.status(200).json(ordensDeServico)
-  },
+  // async find(req: Request, res: Response) {
+  //   const { id } = req.params
+  //   const ordensDeServico = await knex('ordem_de_servico').where({ id })
+  //   return res.status(200).json(ordensDeServico)
+  // },
 
   
 
