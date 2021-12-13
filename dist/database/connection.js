@@ -6,4 +6,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var knex_1 = __importDefault(require("knex"));
 var knexfile_1 = __importDefault(require("../knexfile"));
 exports.default = (0, knex_1.default)(knexfile_1.default['development']);
-console.log('Conexão realizada com sucesso');
+console.log('Conexão com o banco de dados realizada com sucesso');
