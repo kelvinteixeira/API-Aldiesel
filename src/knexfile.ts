@@ -2,11 +2,11 @@ export default {
   development: {
     client: 'mysql2',
     connection: {
-      host: '127.0.0.1',
-      user: 'root',
-      database: 'aldisel_db',
+      host: process.env.host,
+      user: process.env.user,
+      database: process.env.database,
+      password: process.env.password,
       port: 3306,
-      password: 'root'
     }
   }
 }
