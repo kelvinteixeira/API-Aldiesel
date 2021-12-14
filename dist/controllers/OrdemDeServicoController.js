@@ -49,7 +49,7 @@ exports.default = {
                     case 0:
                         _a = req.body, nome_cliente = _a.nome_cliente, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, problema_descricao = _a.problema_descricao;
                         data = { nome_cliente: nome_cliente, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, problema_descricao: problema_descricao };
-                        return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').insert(data)];
+                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').insert(data)];
                     case 1:
                         _b.sent();
                         return [2 /*return*/, res.status(201).json({
@@ -65,7 +65,7 @@ exports.default = {
             var ordensDeServicos;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').orderBy('id')];
+                    case 0: return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').orderBy('id')];
                     case 1:
                         ordensDeServicos = _a.sent();
                         return [2 /*return*/, res.status(200).json(ordensDeServicos)];
@@ -75,7 +75,7 @@ exports.default = {
     },
     // async find(req: Request, res: Response) {
     //   const { id } = req.params
-    //   const ordensDeServico = await knex('ordem_de_servico').where({ id })
+    //   const ordensDeServico = await knex('ordemDeServico').where({ id })
     //   return res.status(200).json(ordensDeServico)
     // },
     update: function (req, res) {
@@ -87,10 +87,10 @@ exports.default = {
                         id = req.params.id;
                         _a = req.body, nome_cliente = _a.nome_cliente, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, problema_descricao = _a.problema_descricao;
                         data = { nome_cliente: nome_cliente, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, problema_descricao: problema_descricao };
-                        return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').update(data).where({ id: id })];
+                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').update(data).where({ id: id })];
                     case 1:
                         _b.sent();
-                        return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').where({ id: id })];
+                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').where({ id: id })];
                     case 2:
                         ordensDeServico = _b.sent();
                         return [2 /*return*/, res.status(200).json({
@@ -108,7 +108,7 @@ exports.default = {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, (0, connection_1.default)('ordem_de_servico').delete().where({ id: id })];
+                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').delete().where({ id: id })];
                     case 1:
                         _a.sent();
                         return [2 /*return*/, res.status(200).json({ message: "Ordem de serviço excluida com sucesso!" })];
