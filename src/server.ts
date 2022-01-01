@@ -22,6 +22,6 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
   return res.json({
-    message: 'API Aldisel, acesse a documentação digitando ao fim da barra de pesquisa api-docs'
+    message: 'API Aldisel'
   })
 })
