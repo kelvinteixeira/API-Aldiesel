@@ -8,6 +8,7 @@ var OrdemDeServicoController_1 = __importDefault(require("./controllers/OrdemDeS
 var routes = (0, express_1.Router)();
 routes.post('/ordemdeservicos', OrdemDeServicoController_1.default.create);
 routes.get('/ordemdeservicos', OrdemDeServicoController_1.default.list);
+routes.get('/ordemdeservicos/:id', OrdemDeServicoController_1.default.find);
 routes.put('/ordemdeservicos/:id', OrdemDeServicoController_1.default.update);
 routes.delete('/ordemdeservicos/:id', OrdemDeServicoController_1.default.delete);
 exports.default = routes;
