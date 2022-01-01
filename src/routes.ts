@@ -1,12 +1,11 @@
 import { Router } from "express";
 
-import OrdemDeServicoController from './controllers/OrdemDeServicoController'
-
+import OsController from './controllers/OrdemDeServicoController';
 const routes = Router()
 
-routes.post('/ordemdeservicos', OrdemDeServicoController.create)
-routes.get('/ordemdeservicos', OrdemDeServicoController.list)
-routes.put('/ordemdeservicos/:id', OrdemDeServicoController.update)
-routes.delete('/ordemdeservicos/:id', OrdemDeServicoController.delete)
+routes.post('/ordemdeservicos', OsController.create)
+routes.get('/ordemdeservicos', OsController.list)
+routes.put('/ordemdeservicos/:id', OsController.update)
+routes.delete('/ordemdeservicos/:id', OsController.delete)
 
 export default routes
