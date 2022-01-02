@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico,  data_criacao, situacao_atual, os_img } = req.body
-      const data = { nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img  }
+      const { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico,  data_criacao, situacao_atual, os_img } = req.body
+      const data = { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img  }
       await knex('ordemdeservico').insert(data)
       return res.status(201).json({
         message: "Ordem de serviço criada com sucesso!",
@@ -37,8 +37,8 @@ export default {
     try {
 
       const { id } = req.params
-      const { nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img  } = req.body
-      const data = { nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img }
+      const { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img  } = req.body
+      const data = { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img}
       await knex('ordemdeservico').update(data).where({ id })
       const ordemDeServico = await knex('ordemdeservico').where({ id })
       return res.status(200).json({

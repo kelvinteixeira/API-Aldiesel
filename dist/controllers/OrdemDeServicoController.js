@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img, data, err_1;
+            var _a, nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome_cliente = _a.nome_cliente, cliente_telefone = _a.cliente_telefone, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, situacao_atual = _a.situacao_atual, os_img = _a.os_img;
-                        data = { nome_cliente: nome_cliente, cliente_telefone: cliente_telefone, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, situacao_atual: situacao_atual, os_img: os_img };
+                        _a = req.body, nome_cliente = _a.nome_cliente, telefone_cliente = _a.telefone_cliente, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, situacao_atual = _a.situacao_atual, os_img = _a.os_img;
+                        data = { nome_cliente: nome_cliente, telefone_cliente: telefone_cliente, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, situacao_atual: situacao_atual, os_img: os_img };
                         return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').insert(data)];
                     case 1:
                         _b.sent();
@@ -103,14 +103,14 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome_cliente, cliente_telefone, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img, data, ordemDeServico, err_3;
+            var id, _a, nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img, data, ordemDeServico, err_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id = req.params.id;
-                        _a = req.body, nome_cliente = _a.nome_cliente, cliente_telefone = _a.cliente_telefone, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, situacao_atual = _a.situacao_atual, os_img = _a.os_img;
-                        data = { nome_cliente: nome_cliente, cliente_telefone: cliente_telefone, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, situacao_atual: situacao_atual, os_img: os_img };
+                        _a = req.body, nome_cliente = _a.nome_cliente, telefone_cliente = _a.telefone_cliente, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, situacao_atual = _a.situacao_atual, os_img = _a.os_img;
+                        data = { nome_cliente: nome_cliente, telefone_cliente: telefone_cliente, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, situacao_atual: situacao_atual, os_img: os_img };
                         return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').update(data).where({ id: id })];
                     case 1:
                         _b.sent();
