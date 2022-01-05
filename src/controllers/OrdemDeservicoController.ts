@@ -37,8 +37,8 @@ export default {
     try {
 
       const { id } = req.params
-      const { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img  } = req.body
-      const data = { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img}
+      const { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img } = req.body
+      const data = { nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, situacao_atual, os_img }
       await knex('ordemdeservico').update(data).where({ id })
       const ordemDeServico = await knex('ordemdeservico').where({ id })
       return res.status(200).json({
