@@ -6,7 +6,7 @@ const routes = Router()
 routes.post('/ordemdeservicos', OsController.create)
 routes.get('/ordemdeservicos', OsController.list)
 routes.get('/ordemdeservicos/:id', OsController.find)
-routes.put('/editordemdeservicos/:id', OsController.update)
+routes.put('/ordemdeservicos/editar/:id', OsController.update)
 routes.delete('/ordemdeservicos/:id', OsController.delete)
 
 export default routes
