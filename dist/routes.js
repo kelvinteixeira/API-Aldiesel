@@ -15,7 +15,7 @@ routes.put('/clientes/editar/atualizar/:id_cliente', ClientesController_1.defaul
 routes.delete('/clientes/deletar/:id_cliente', ClientesController_1.default.delete);
 routes.post('/clientes/carros/adicionar', CarrosController_1.default.create);
 routes.get('/clientes/carros/listar', CarrosController_1.default.list);
-routes.get('/clientes/carros/encontrar/:id_carros', CarrosController_1.default.find);
+routes.get('/clientes/carros/encontrar/:id_cliente', CarrosController_1.default.find);
 routes.put('/clientes/carros/atualizar/:id_carros', CarrosController_1.default.update);
 routes.delete('/clientes/carros/deletar/:id_carros', CarrosController_1.default.delete);
 routes.post('/clientes/ordemdeservicos/adicionar', OsController_1.default.create);

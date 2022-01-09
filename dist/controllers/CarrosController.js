@@ -88,12 +88,12 @@ exports.default = {
     },
     find: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_carros, carro;
+            var id_cliente, carro;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        id_carros = req.params.id_carros;
-                        return [4 /*yield*/, (0, connection_1.default)('carros').where({ id_carros: id_carros })];
+                        id_cliente = req.params.id_cliente;
+                        return [4 /*yield*/, (0, connection_1.default)('carros').where({ id_cliente: id_cliente })];
                     case 1:
                         carro = _a.sent();
                         return [2 /*return*/, res.status(200).json(carro)];
