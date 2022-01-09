@@ -26,8 +26,8 @@ export default {
   },
 
   async find(req: Request, res: Response) {
-    const { id_carros } = req.params
-    const carro = await knex('carros').where({ id_carros })
+    const { id_cliente } = req.params
+    const carro = await knex('carros').where({ id_cliente })
     return res.status(200).json(carro)
   },
 
