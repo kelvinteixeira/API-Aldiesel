@@ -43,18 +43,18 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, data_alteracao, situacao_atual, os_img, codigo1, codigo2, codigo3, codigo4, codigo5, codigo6, codigo7, codigo8, codigo9, codigo10, observacoes, data, err_1;
+            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome_cliente = _a.nome_cliente, telefone_cliente = _a.telefone_cliente, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, data_alteracao = _a.data_alteracao, situacao_atual = _a.situacao_atual, os_img = _a.os_img, codigo1 = _a.codigo1, codigo2 = _a.codigo2, codigo3 = _a.codigo3, codigo4 = _a.codigo4, codigo5 = _a.codigo5, codigo6 = _a.codigo6, codigo7 = _a.codigo7, codigo8 = _a.codigo8, codigo9 = _a.codigo9, codigo10 = _a.codigo10, observacoes = _a.observacoes;
-                        data = { nome_cliente: nome_cliente, telefone_cliente: telefone_cliente, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, data_alteracao: data_alteracao, situacao_atual: situacao_atual, os_img: os_img, codigo1: codigo1, codigo2: codigo2, codigo3: codigo3, codigo4: codigo4, codigo5: codigo5, codigo6: codigo6, codigo7: codigo7, codigo8: codigo8, codigo9: codigo9, codigo10: codigo10, observacoes: observacoes };
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').insert(data)];
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
+                        return [4 /*yield*/, (0, connection_1.default)('clientes').insert(data)];
                     case 1:
                         _b.sent();
                         return [2 /*return*/, res.status(201).json({
-                                message: "Ordem de serviço criada com sucesso!",
+                                message: "Cliente cadastrado com com sucesso!",
                                 data: data
                             })];
                     case 2:
@@ -68,15 +68,15 @@ exports.default = {
     },
     list: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var ordensDeServicos, err_2;
+            var clientes, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').orderBy('id')];
+                        return [4 /*yield*/, (0, connection_1.default)('clientes').orderBy('id_cliente')];
                     case 1:
-                        ordensDeServicos = _a.sent();
-                        return [2 /*return*/, res.status(200).json(ordensDeServicos)];
+                        clientes = _a.sent();
+                        return [2 /*return*/, res.status(200).json(clientes)];
                     case 2:
                         err_2 = _a.sent();
                         console.log(err_2);
@@ -88,38 +88,38 @@ exports.default = {
     },
     find: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, ordensDeServico;
+            var id_cliente, cliente;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        id = req.params.id;
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').where({ id: id })];
+                        id_cliente = req.params.id_cliente;
+                        return [4 /*yield*/, (0, connection_1.default)('clientes').where({ id_cliente: id_cliente })];
                     case 1:
-                        ordensDeServico = _a.sent();
-                        return [2 /*return*/, res.status(200).json(ordensDeServico)];
+                        cliente = _a.sent();
+                        return [2 /*return*/, res.status(200).json(cliente)];
                 }
             });
         });
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome_cliente, telefone_cliente, os_numero, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, descricao_problema, diagnostico, data_criacao, data_alteracao, situacao_atual, os_img, codigo1, codigo2, codigo3, codigo4, codigo5, codigo6, codigo7, codigo8, codigo9, codigo10, observacoes, data, ordemDeServico, err_3;
+            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, cliente, err_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
-                        id = req.params.id;
-                        _a = req.body, nome_cliente = _a.nome_cliente, telefone_cliente = _a.telefone_cliente, os_numero = _a.os_numero, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, descricao_problema = _a.descricao_problema, diagnostico = _a.diagnostico, data_criacao = _a.data_criacao, data_alteracao = _a.data_alteracao, situacao_atual = _a.situacao_atual, os_img = _a.os_img, codigo1 = _a.codigo1, codigo2 = _a.codigo2, codigo3 = _a.codigo3, codigo4 = _a.codigo4, codigo5 = _a.codigo5, codigo6 = _a.codigo6, codigo7 = _a.codigo7, codigo8 = _a.codigo8, codigo9 = _a.codigo9, codigo10 = _a.codigo10, observacoes = _a.observacoes;
-                        data = { nome_cliente: nome_cliente, telefone_cliente: telefone_cliente, os_numero: os_numero, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, descricao_problema: descricao_problema, diagnostico: diagnostico, data_criacao: data_criacao, data_alteracao: data_alteracao, situacao_atual: situacao_atual, os_img: os_img, codigo1: codigo1, codigo2: codigo2, codigo3: codigo3, codigo4: codigo4, codigo5: codigo5, codigo6: codigo6, codigo7: codigo7, codigo8: codigo8, codigo9: codigo9, codigo10: codigo10, observacoes: observacoes };
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').update(data).where({ id: id })];
+                        id_cliente = req.params.id_cliente;
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
+                        return [4 /*yield*/, (0, connection_1.default)('clientes').update(data).where({ id_cliente: id_cliente })];
                     case 1:
                         _b.sent();
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').where({ id: id })];
+                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').where({ id_cliente: id_cliente })];
                     case 2:
-                        ordemDeServico = _b.sent();
+                        cliente = _b.sent();
                         return [2 /*return*/, res.status(200).json({
-                                message: 'Alterado com sucesso em ' + new Date().toISOString(),
-                                ordemDeServico: ordemDeServico
+                                message: 'Dados atualizados com sucesso!',
+                                cliente: cliente
                             })];
                     case 3:
                         err_3 = _b.sent();
@@ -132,16 +132,16 @@ exports.default = {
     },
     delete: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, err_4;
+            var id_cliente, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        id = req.params.id;
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').delete().where({ id: id })];
+                        id_cliente = req.params.id_cliente;
+                        return [4 /*yield*/, (0, connection_1.default)('clientes').delete().where({ id_cliente: id_cliente })];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/, res.status(200).json({ message: "Ordem de serviço excluida com sucesso!" })];
+                        return [2 /*return*/, res.status(200).json({ message: "Cliente excluido com sucesso!" })];
                     case 2:
                         err_4 = _a.sent();
                         console.log(err_4);
