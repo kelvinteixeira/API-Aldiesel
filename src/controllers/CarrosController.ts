@@ -25,6 +25,15 @@ export default {
     }
   },
 
+  async listByClient(req: Request, res: Response) {
+    try {
+      const carros = await knex('carros').orderBy('id_cliente')
+      return res.status(200).json(carros)
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
   async find(req: Request, res: Response) {
     const { id_cliente } = req.params
     const carro = await knex('carros').where({ id_cliente })
