@@ -11,7 +11,7 @@ var routes = (0, express_1.Router)();
 routes.post('/clientes/adicionar', ClientesController_1.default.create);
 routes.get('/clientes/listar', ClientesController_1.default.list);
 routes.get('/clientes/encontrar/:id_cliente', ClientesController_1.default.find);
-routes.put('/clientes/editar/atualizar/:id_cliente', ClientesController_1.default.update);
+routes.put('/clientes/atualizar/:id_cliente', ClientesController_1.default.update);
 routes.delete('/clientes/deletar/:id_cliente', ClientesController_1.default.delete);
 routes.post('/clientes/carros/adicionar', CarrosController_1.default.create);
 routes.get('/clientes/carros/listar', CarrosController_1.default.list);

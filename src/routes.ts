@@ -9,7 +9,7 @@ const routes = Router()
 routes.post('/clientes/adicionar', ClientesController.create)
 routes.get('/clientes/listar', ClientesController.list)
 routes.get('/clientes/encontrar/:id_cliente', ClientesController.find)
-routes.put('/clientes/editar/atualizar/:id_cliente', ClientesController.update)
+routes.put('/clientes/atualizar/:id_cliente', ClientesController.update)
 routes.delete('/clientes/deletar/:id_cliente', ClientesController.delete)
 
 routes.post('/clientes/carros/adicionar', CarrosController.create)
