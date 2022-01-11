@@ -15,7 +15,7 @@ routes.delete('/clientes/deletar/:id_cliente', ClientesController.delete)
 routes.post('/clientes/carros/adicionar', CarrosController.create)
 routes.get('/clientes/carros/listar', CarrosController.list)
 routes.get('/clientes/carros/listarporcliente', CarrosController.listByClient)
-routes.get('/clientes/carros/encontrar/:id_cliente', CarrosController.find)
+routes.get('/clientes/carros/encontrar/:id_carros', CarrosController.find)
 routes.put('/clientes/carros/atualizar/:id_carros', CarrosController.update)
 routes.delete('/clientes/carros/deletar/:id_carros', CarrosController.delete)
 
