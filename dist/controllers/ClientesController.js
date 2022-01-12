@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, data, err_1;
+            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, carro_modelo = _a.carro_modelo, carro_placa = _a.carro_placa, carro_ano = _a.carro_ano, carro_cor = _a.carro_cor, carro_problema = _a.carro_problema, situacao = _a.situacao, data_entrada = _a.data_entrada;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, carro_modelo: carro_modelo, carro_placa: carro_placa, carro_ano: carro_ano, carro_cor: carro_cor, carro_problema: carro_problema, situacao: situacao, data_entrada: data_entrada };
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, carro_modelo = _a.carro_modelo, carro_placa = _a.carro_placa, carro_ano = _a.carro_ano, carro_cor = _a.carro_cor, carro_problema = _a.carro_problema, situacao = _a.situacao, data_entrada = _a.data_entrada, mecanico = _a.mecanico;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, carro_modelo: carro_modelo, carro_placa: carro_placa, carro_ano: carro_ano, carro_cor: carro_cor, carro_problema: carro_problema, situacao: situacao, data_entrada: data_entrada, mecanico: mecanico };
                         return [4 /*yield*/, (0, connection_1.default)('clientes').insert(data)];
                     case 1:
                         _b.sent();
@@ -103,14 +103,14 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, data, cliente, err_3;
+            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico, data, cliente, err_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id_cliente = req.params.id_cliente;
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, carro_modelo = _a.carro_modelo, carro_placa = _a.carro_placa, carro_ano = _a.carro_ano, carro_cor = _a.carro_cor, carro_problema = _a.carro_problema, situacao = _a.situacao, data_entrada = _a.data_entrada;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, carro_modelo: carro_modelo, carro_placa: carro_placa, carro_ano: carro_ano, carro_cor: carro_cor, carro_problema: carro_problema, situacao: situacao, data_entrada: data_entrada };
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, carro_modelo = _a.carro_modelo, carro_placa = _a.carro_placa, carro_ano = _a.carro_ano, carro_cor = _a.carro_cor, carro_problema = _a.carro_problema, situacao = _a.situacao, data_entrada = _a.data_entrada, mecanico = _a.mecanico;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, carro_modelo: carro_modelo, carro_placa: carro_placa, carro_ano: carro_ano, carro_cor: carro_cor, carro_problema: carro_problema, situacao: situacao, data_entrada: data_entrada, mecanico: mecanico };
                         return [4 /*yield*/, (0, connection_1.default)('clientes').update(data).where({ id_cliente: id_cliente })];
                     case 1:
                         _b.sent();

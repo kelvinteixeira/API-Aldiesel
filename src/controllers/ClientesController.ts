@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada }
+      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico } = req.body
+      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico }
       await knex('clientes').insert(data)
       return res.status(201).json({
         message: "Cliente cadastrado com com sucesso!",
@@ -37,8 +37,8 @@ export default {
     try {
 
       const { id_cliente } = req.params
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada }
+      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico } = req.body
+      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, carro_modelo, carro_placa, carro_ano, carro_cor, carro_problema, situacao, data_entrada, mecanico }
       await knex('clientes').update(data).where({ id_cliente })
       const cliente = await knex('ordemdeservico').where({ id_cliente })
       return res.status(200).json({
