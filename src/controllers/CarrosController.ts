@@ -17,6 +17,24 @@ export default {
       })
     }
   },
+
+  async createById(req: Request, res: Response) {
+    try {
+      const { id_carros } = req.params
+      const { nome, modelo, placa, ano, cor, problema, id_cliente } = req.body
+      const data = { nome, modelo, placa, ano, cor, problema, id_cliente }
+      await knex('carros').insert(data).where(id_carros)
+      return res.status(201).json({
+        message: "Carro cadastrado com com sucesso!",
+        data: data
+      })
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
+    }
+  },
+
   async list(req: Request, res: Response) {
     try {
       const carros = await knex('carros').orderBy('id_carros')
