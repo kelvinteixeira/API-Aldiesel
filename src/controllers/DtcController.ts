@@ -4,11 +4,11 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { situacao, diagnostico, data_alteracao, procedimentos, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, procedimentos, id_carros }
-      await knex('ordens').insert(data)
+      const { codigo, dtc, estado, is_os } = req.body
+      const data = { codigo, dtc, estado, is_os }
+      await knex('dtcs').insert(data)
       return res.status(201).json({
-        message: "Ordem de serviço cadastrada com com sucesso!",
+        message: "DTCs cadastrados com com sucesso!",
         data: data
       })
     } catch (err: any) {
@@ -20,7 +20,7 @@ export default {
 
   async list(req: Request, res: Response) {
     try {
-      const ordemDesevicos = await knex('ordens').orderBy('id_os')
+      const ordemDesevicos = await knex('dtcs').orderBy('id_dtc')
       return res.status(200).json(ordemDesevicos)
     } catch (err: any) {
       return res.status(500).json({
@@ -32,8 +32,8 @@ export default {
   async find(req: Request, res: Response) {
     try {
       const { id_os } = req.params
-      const os = await knex('ordens').where({ id_os })
-      return res.status(200).json(os)
+      const dtc = await knex('dtcs').where({ id_os })
+      return res.status(200).json(dtc)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -41,19 +41,16 @@ export default {
     }
   },
 
-
-
   async update(req: Request, res: Response) {
     try {
-
-      const { id_os } = req.params
-      const { situacao, diagnostico, data_alteracao, procedimentos, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, procedimentos, id_carros }
-      await knex('ordens').update(data).where({ id_os })
-      const os = await knex('ordens').where({ id_os })
+      const { id_dtc } = req.params
+      const { codigo, dtc, estado, is_os } = req.body
+      const data = { codigo, dtc, estado, is_os }
+      await knex('dtcs').update(data).where({ id_dtc })
+      const dtcs = await knex('dtcs').where({ id_dtc })
       return res.status(200).json({
-        message: 'Ordem de servico atualizada com sucesso!',
-        os
+        message: 'DTCs atualizados com sucesso!',
+        dtcs
       })
     } catch (err: any) {
       return res.status(500).json({
@@ -64,9 +61,9 @@ export default {
 
   async delete(req: Request, res: Response) {
     try {
-      const { id_os } = req.params
-      await knex('ordens').delete().where({ id_os })
-      return res.status(200).json({ message: "Ordem de servico excluida com sucesso!" })
+      const { id_dtc } = req.params
+      await knex('dtcs').delete().where({ id_dtc })
+      return res.status(200).json({ message: "DTCs excluidos com sucesso!" })
     } catch (err: any) {
       return res.status(500).json({
         message: err.message

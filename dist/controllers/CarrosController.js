@@ -59,8 +59,9 @@ exports.default = {
                             })];
                     case 2:
                         err_1 = _b.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_1.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -79,28 +80,9 @@ exports.default = {
                         return [2 /*return*/, res.status(200).json(carros)];
                     case 2:
                         err_2 = _a.sent();
-                        console.log(err_2);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    },
-    listByClient: function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var carros, err_3;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, (0, connection_1.default)('carros').orderBy('id_cliente')];
-                    case 1:
-                        carros = _a.sent();
-                        return [2 /*return*/, res.status(200).json(carros)];
-                    case 2:
-                        err_3 = _a.sent();
-                        console.log(err_3);
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_2.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -108,15 +90,22 @@ exports.default = {
     },
     find: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, carro;
+            var id_cliente, carro, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        _a.trys.push([0, 2, , 3]);
                         id_cliente = req.params.id_cliente;
                         return [4 /*yield*/, (0, connection_1.default)('carros').where({ id_cliente: id_cliente })];
                     case 1:
                         carro = _a.sent();
                         return [2 /*return*/, res.status(200).json(carro)];
+                    case 2:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_3.message
+                            })];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -143,8 +132,9 @@ exports.default = {
                             })];
                     case 3:
                         err_4 = _b.sent();
-                        console.log(err_4);
-                        return [3 /*break*/, 4];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_4.message
+                            })];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -164,11 +154,12 @@ exports.default = {
                         return [2 /*return*/, res.status(200).json({ message: "Carro excluido com sucesso!" })];
                     case 2:
                         err_5 = _a.sent();
-                        console.log(err_5);
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_5.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });
         });
-    }
+    },
 };

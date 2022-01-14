@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, diagnostico, data_alteracao, codigo, dtc, estado, id_cliente, data, err_1;
+            var _a, situacao, diagnostico, data_alteracao, procedimentos, id_carros, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_cliente = _a.id_cliente;
-                        data = { diagnostico: diagnostico, data_alteracao: data_alteracao, codigo: codigo, dtc: dtc, estado: estado, id_cliente: id_cliente };
+                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, procedimentos = _a.procedimentos, id_carros = _a.id_carros;
+                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, procedimentos: procedimentos, id_carros: id_carros };
                         return [4 /*yield*/, (0, connection_1.default)('ordens').insert(data)];
                     case 1:
                         _b.sent();
@@ -59,8 +59,9 @@ exports.default = {
                             })];
                     case 2:
                         err_1 = _b.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_1.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -79,8 +80,9 @@ exports.default = {
                         return [2 /*return*/, res.status(200).json(ordemDesevicos)];
                     case 2:
                         err_2 = _a.sent();
-                        console.log(err_2);
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_2.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });
@@ -88,43 +90,51 @@ exports.default = {
     },
     find: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_os, ordemDeServico;
+            var id_os, os, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        _a.trys.push([0, 2, , 3]);
                         id_os = req.params.id_os;
                         return [4 /*yield*/, (0, connection_1.default)('ordens').where({ id_os: id_os })];
                     case 1:
-                        ordemDeServico = _a.sent();
-                        return [2 /*return*/, res.status(200).json(ordemDeServico)];
+                        os = _a.sent();
+                        return [2 /*return*/, res.status(200).json(os)];
+                    case 2:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_3.message
+                            })];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_os, _a, diagnostico, data_alteracao, codigo, dtc, estado, id_cliente, data, cliente, err_3;
+            var id_os, _a, situacao, diagnostico, data_alteracao, procedimentos, id_carros, data, os, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id_os = req.params.id_os;
-                        _a = req.body, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_cliente = _a.id_cliente;
-                        data = { diagnostico: diagnostico, data_alteracao: data_alteracao, codigo: codigo, dtc: dtc, estado: estado, id_cliente: id_cliente };
+                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, procedimentos = _a.procedimentos, id_carros = _a.id_carros;
+                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, procedimentos: procedimentos, id_carros: id_carros };
                         return [4 /*yield*/, (0, connection_1.default)('ordens').update(data).where({ id_os: id_os })];
                     case 1:
                         _b.sent();
                         return [4 /*yield*/, (0, connection_1.default)('ordens').where({ id_os: id_os })];
                     case 2:
-                        cliente = _b.sent();
+                        os = _b.sent();
                         return [2 /*return*/, res.status(200).json({
                                 message: 'Ordem de servico atualizada com sucesso!',
-                                cliente: cliente
+                                os: os
                             })];
                     case 3:
-                        err_3 = _b.sent();
-                        console.log(err_3);
-                        return [3 /*break*/, 4];
+                        err_4 = _b.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_4.message
+                            })];
                     case 4: return [2 /*return*/];
                 }
             });
@@ -132,20 +142,21 @@ exports.default = {
     },
     delete: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, err_4;
+            var id_os, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        id_cliente = req.params.id_cliente;
-                        return [4 /*yield*/, (0, connection_1.default)('ordens').delete().where({ id_cliente: id_cliente })];
+                        id_os = req.params.id_os;
+                        return [4 /*yield*/, (0, connection_1.default)('ordens').delete().where({ id_os: id_os })];
                     case 1:
                         _a.sent();
                         return [2 /*return*/, res.status(200).json({ message: "Ordem de servico excluida com sucesso!" })];
                     case 2:
-                        err_4 = _a.sent();
-                        console.log(err_4);
-                        return [3 /*break*/, 3];
+                        err_5 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_5.message
+                            })];
                     case 3: return [2 /*return*/];
                 }
             });

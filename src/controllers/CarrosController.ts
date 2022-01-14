@@ -5,39 +5,39 @@ export default {
   async create(req: Request, res: Response) {
     try {
       const { nome, modelo, placa, ano, cor, problema, id_cliente } = req.body
-      const data = { nome, modelo, placa, ano, cor, problema, id_cliente  }
+      const data = { nome, modelo, placa, ano, cor, problema, id_cliente }
       await knex('carros').insert(data)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
         data: data
       })
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
     }
   },
-
   async list(req: Request, res: Response) {
     try {
       const carros = await knex('carros').orderBy('id_carros')
       return res.status(200).json(carros)
-    } catch (err) {
-      console.log(err)
-    }
-  },
-
-  async listByClient(req: Request, res: Response) {
-    try {
-      const carros = await knex('carros').orderBy('id_cliente')
-      return res.status(200).json(carros)
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
     }
   },
 
   async find(req: Request, res: Response) {
-    const { id_cliente } = req.params
-    const carro = await knex('carros').where({ id_cliente })
-    return res.status(200).json(carro)
+    try {
+      const { id_cliente } = req.params
+      const carro = await knex('carros').where({ id_cliente })
+      return res.status(200).json(carro)
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
+    }
   },
 
 
@@ -54,8 +54,10 @@ export default {
         message: 'Dados atualizados com sucesso!',
         carro
       })
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
     }
   },
 
@@ -64,8 +66,10 @@ export default {
       const { id_carros } = req.params
       await knex('carros').delete().where({ id_carros })
       return res.status(200).json({ message: "Carro excluido com sucesso!" })
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      return res.status(500).json({
+        message: err.message
+      })
     }
-  }
+  },
 }

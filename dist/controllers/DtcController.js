@@ -43,18 +43,18 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, err_1;
+            var _a, codigo, dtc, estado, is_os, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').insert(data)];
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, is_os = _a.is_os;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, is_os: is_os };
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').insert(data)];
                     case 1:
                         _b.sent();
                         return [2 /*return*/, res.status(201).json({
-                                message: "Cliente cadastrado com com sucesso!",
+                                message: "DTCs cadastrados com com sucesso!",
                                 data: data
                             })];
                     case 2:
@@ -69,15 +69,15 @@ exports.default = {
     },
     list: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var clientes, err_2;
+            var ordemDesevicos, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').orderBy('id_cliente')];
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').orderBy('id_dtc')];
                     case 1:
-                        clientes = _a.sent();
-                        return [2 /*return*/, res.status(200).json(clientes)];
+                        ordemDesevicos = _a.sent();
+                        return [2 /*return*/, res.status(200).json(ordemDesevicos)];
                     case 2:
                         err_2 = _a.sent();
                         return [2 /*return*/, res.status(500).json({
@@ -90,16 +90,16 @@ exports.default = {
     },
     find: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, cliente, err_3;
+            var id_os, dtc, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        id_cliente = req.params.id_cliente;
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').where({ id_cliente: id_cliente })];
+                        id_os = req.params.id_os;
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').where({ id_os: id_os })];
                     case 1:
-                        cliente = _a.sent();
-                        return [2 /*return*/, res.status(200).json(cliente)];
+                        dtc = _a.sent();
+                        return [2 /*return*/, res.status(200).json(dtc)];
                     case 2:
                         err_3 = _a.sent();
                         return [2 /*return*/, res.status(500).json({
@@ -112,23 +112,23 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, cliente, err_4;
+            var id_dtc, _a, codigo, dtc, estado, is_os, data, dtcs, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
-                        id_cliente = req.params.id_cliente;
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').update(data).where({ id_cliente: id_cliente })];
+                        id_dtc = req.params.id_dtc;
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, is_os = _a.is_os;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, is_os: is_os };
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').update(data).where({ id_dtc: id_dtc })];
                     case 1:
                         _b.sent();
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').where({ id_cliente: id_cliente })];
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').where({ id_dtc: id_dtc })];
                     case 2:
-                        cliente = _b.sent();
+                        dtcs = _b.sent();
                         return [2 /*return*/, res.status(200).json({
-                                message: 'Dados atualizados com sucesso!',
-                                cliente: cliente
+                                message: 'DTCs atualizados com sucesso!',
+                                dtcs: dtcs
                             })];
                     case 3:
                         err_4 = _b.sent();
@@ -142,16 +142,16 @@ exports.default = {
     },
     delete: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, err_5;
+            var id_dtc, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        id_cliente = req.params.id_cliente;
-                        return [4 /*yield*/, (0, connection_1.default)('clientes').delete().where({ id_cliente: id_cliente })];
+                        id_dtc = req.params.id_dtc;
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').delete().where({ id_dtc: id_dtc })];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/, res.status(200).json({ message: "Cliente excluido com sucesso!" })];
+                        return [2 /*return*/, res.status(200).json({ message: "DTCs excluidos com sucesso!" })];
                     case 2:
                         err_5 = _a.sent();
                         return [2 /*return*/, res.status(500).json({
