@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome, modelo, placa, ano, cor, problema, id_cliente, data, err_1;
+            var _a, modelo, placa, ano, cor, problema, id_cliente, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome = _a.nome, modelo = _a.modelo, placa = _a.placa, ano = _a.ano, cor = _a.cor, problema = _a.problema, id_cliente = _a.id_cliente;
-                        data = { nome: nome, modelo: modelo, placa: placa, ano: ano, cor: cor, problema: problema, id_cliente: id_cliente };
+                        _a = req.body, modelo = _a.modelo, placa = _a.placa, ano = _a.ano, cor = _a.cor, problema = _a.problema, id_cliente = _a.id_cliente;
+                        data = { modelo: modelo, placa: placa, ano: ano, cor: cor, problema: problema, id_cliente: id_cliente };
                         return [4 /*yield*/, (0, connection_1.default)('carros').insert(data)];
                     case 1:
                         _b.sent();
