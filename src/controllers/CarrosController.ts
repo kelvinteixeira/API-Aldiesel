@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { nome, modelo, placa, ano, cor, problema, id_cliente } = req.body
-      const data = { nome, modelo, placa, ano, cor, problema, id_cliente }
+      const { modelo, placa, ano, cor, problema, id_cliente } = req.body
+      const data = { modelo, placa, ano, cor, problema, id_cliente }
       await knex('carros').insert(data)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
