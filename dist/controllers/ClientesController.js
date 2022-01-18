@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, err_1;
+            var _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, entrada = _a.entrada;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, entrada: entrada };
                         return [4 /*yield*/, (0, connection_1.default)('clientes').insert(data)];
                     case 1:
                         _b.sent();
@@ -112,14 +112,14 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, data, cliente, err_4;
+            var id_cliente, _a, nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada, data, cliente, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id_cliente = req.params.id_cliente;
-                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado;
-                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado };
+                        _a = req.body, nome = _a.nome, telefone = _a.telefone, endereco_rua = _a.endereco_rua, endereco_numero = _a.endereco_numero, endereco_bairro = _a.endereco_bairro, endereco_cidade = _a.endereco_cidade, endereco_estado = _a.endereco_estado, entrada = _a.entrada;
+                        data = { nome: nome, telefone: telefone, endereco_rua: endereco_rua, endereco_numero: endereco_numero, endereco_bairro: endereco_bairro, endereco_cidade: endereco_cidade, endereco_estado: endereco_estado, entrada: entrada };
                         return [4 /*yield*/, (0, connection_1.default)('clientes').update(data).where({ id_cliente: id_cliente })];
                     case 1:
                         _b.sent();

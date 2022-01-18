@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { modelo, placa, ano, cor, problema, id_cliente } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente }
+      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
+      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
       await knex('carros').insert(data)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
@@ -21,8 +21,8 @@ export default {
   async createById(req: Request, res: Response) {
     try {
       const { id_carros } = req.params
-      const { modelo, placa, ano, cor, problema, id_cliente } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente }
+      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
+      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
       await knex('carros').insert(data).where(id_carros)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
@@ -64,8 +64,8 @@ export default {
     try {
 
       const { id_carros } = req.params
-      const { modelo, placa, ano, cor, problema, id_cliente } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente }
+      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
+      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
       await knex('carros').update(data).where({ id_carros })
       const carro = await knex('carros').where({ id_carros })
       return res.status(200).json({

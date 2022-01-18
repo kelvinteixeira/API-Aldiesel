@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado }
+      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada } = req.body
+      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada }
       await knex('clientes').insert(data)
       return res.status(201).json({
         message: "Cliente cadastrado com com sucesso!",
@@ -47,8 +47,8 @@ export default {
     try {
 
       const { id_cliente } = req.params
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado }
+      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada } = req.body
+      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada }
       await knex('clientes').update(data).where({ id_cliente })
       const cliente = await knex('clientes').where({ id_cliente })
       return res.status(200).json({
