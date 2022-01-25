@@ -4,8 +4,8 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { situacao, diagnostico, data_alteracao, procedimentos, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, procedimentos, id_carros }
+      const { situacao, diagnostico, data_alteracao, mecanico, id_carros } = req.body
+      const data = { situacao, diagnostico, data_alteracao, mecanico, id_carros }
       await knex('ordens').insert(data)
       return res.status(201).json({
         message: "Ordem de serviço cadastrada com com sucesso!",
@@ -47,8 +47,8 @@ export default {
     try {
 
       const { id_os } = req.params
-      const { situacao, diagnostico, data_alteracao, procedimentos, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, procedimentos, id_carros }
+      const { situacao, diagnostico, data_alteracao, mecanico, id_carros } = req.body
+      const data = { situacao, diagnostico, data_alteracao, mecanico, id_carros }
       await knex('ordens').update(data).where({ id_os })
       const os = await knex('ordens').where({ id_os })
       return res.status(200).json({

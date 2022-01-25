@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, situacao, diagnostico, data_alteracao, procedimentos, id_carros, data, err_1;
+            var _a, situacao, diagnostico, data_alteracao, mecanico, id_carros, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, procedimentos = _a.procedimentos, id_carros = _a.id_carros;
-                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, procedimentos: procedimentos, id_carros: id_carros };
+                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, mecanico = _a.mecanico, id_carros = _a.id_carros;
+                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, mecanico: mecanico, id_carros: id_carros };
                         return [4 /*yield*/, (0, connection_1.default)('ordens').insert(data)];
                     case 1:
                         _b.sent();
@@ -112,14 +112,14 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_os, _a, situacao, diagnostico, data_alteracao, procedimentos, id_carros, data, os, err_4;
+            var id_os, _a, situacao, diagnostico, data_alteracao, mecanico, id_carros, data, os, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id_os = req.params.id_os;
-                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, procedimentos = _a.procedimentos, id_carros = _a.id_carros;
-                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, procedimentos: procedimentos, id_carros: id_carros };
+                        _a = req.body, situacao = _a.situacao, diagnostico = _a.diagnostico, data_alteracao = _a.data_alteracao, mecanico = _a.mecanico, id_carros = _a.id_carros;
+                        data = { situacao: situacao, diagnostico: diagnostico, data_alteracao: data_alteracao, mecanico: mecanico, id_carros: id_carros };
                         return [4 /*yield*/, (0, connection_1.default)('ordens').update(data).where({ id_os: id_os })];
                     case 1:
                         _b.sent();
