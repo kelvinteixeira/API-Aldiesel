@@ -43,13 +43,13 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, codigo, dtc, estado, id_os, data, err_1;
+            var _a, codigo, dtc, estado, id_carro, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_os = _a.id_os;
-                        data = { codigo: codigo, dtc: dtc, estado: estado, id_os: id_os };
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_carro = _a.id_carro;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, id_carro: id_carro };
                         return [4 /*yield*/, (0, connection_1.default)('dtcs').insert(data)];
                     case 1:
                         _b.sent();
@@ -112,14 +112,14 @@ exports.default = {
     },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id_dtc, _a, codigo, dtc, estado, id_os, data, dtcs, err_4;
+            var id_dtc, _a, codigo, dtc, estado, id_carro, data, dtcs, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
                         id_dtc = req.params.id_dtc;
-                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_os = _a.id_os;
-                        data = { codigo: codigo, dtc: dtc, estado: estado, id_os: id_os };
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, id_carro = _a.id_carro;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, id_carro: id_carro };
                         return [4 /*yield*/, (0, connection_1.default)('dtcs').update(data).where({ id_dtc: id_dtc })];
                     case 1:
                         _b.sent();
