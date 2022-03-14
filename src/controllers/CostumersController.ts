@@ -4,9 +4,9 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada }
-      await knex('clientes').insert(data)
+      const { name, phone, street, houseNumber, district, city, state, entryDate  } = req.body
+      const data = { name, phone, street, houseNumber, district, city, state, entryDate }
+      await knex('costumers').insert(data)
       return res.status(201).json({
         message: "Cliente cadastrado com com sucesso!",
         data: data
@@ -20,8 +20,8 @@ export default {
 
   async list(req: Request, res: Response) {
     try {
-      const clientes = await knex('clientes').orderBy('id_cliente')
-      return res.status(200).json(clientes)
+      const costumers = await knex('costumers').orderBy('id')
+      return res.status(200).json(costumers)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -31,9 +31,9 @@ export default {
 
   async find(req: Request, res: Response) {
     try {
-      const { id_cliente } = req.params
-      const cliente = await knex('clientes').where({ id_cliente })
-      return res.status(200).json(cliente)
+      const { id } = req.params
+      const costumer = await knex('costumers').where({ id })
+      return res.status(200).json(costumer)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -46,14 +46,14 @@ export default {
   async update(req: Request, res: Response) {
     try {
 
-      const { id_cliente } = req.params
-      const { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada } = req.body
-      const data = { nome, telefone, endereco_rua, endereco_numero, endereco_bairro, endereco_cidade, endereco_estado, entrada }
-      await knex('clientes').update(data).where({ id_cliente })
-      const cliente = await knex('clientes').where({ id_cliente })
+      const { id } = req.params
+      const { name, phone, street, houseNumber, district, city, state, entryDate } = req.body
+      const data = { name, phone, street, houseNumber, district, city, state, entryDate }
+      await knex('costumers').update(data).where({ id })
+      const costumer = await knex('costumers').where({ id })
       return res.status(200).json({
         message: 'Dados atualizados com sucesso!',
-        cliente
+        costumer
       })
     } catch (err: any) {
       return res.status(500).json({
@@ -64,8 +64,8 @@ export default {
 
   async delete(req: Request, res: Response) {
     try {
-      const { id_cliente } = req.params
-      await knex('clientes').delete().where({ id_cliente })
+      const { id } = req.params
+      await knex('costumers').delete().where({ id })
       return res.status(200).json({ message: "Cliente excluido com sucesso!" })
     } catch (err: any) {
       return res.status(500).json({

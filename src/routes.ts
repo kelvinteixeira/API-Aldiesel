@@ -1,35 +1,35 @@
 import { Router } from "express";
 
-import ClientesController from "./controllers/ClientesController";
-import CarrosController from "./controllers/CarrosController";
-import OsController from './controllers/OsController';
+import CostumerController from "./controllers/CostumersController";
+import CarController from "./controllers/CarsController";
+import ServiceOrderController from './controllers/ServiceOrderController';
 import DtcController from './controllers/DtcController';
 
 const routes = Router()
 
-routes.post('/clientes/adicionar', ClientesController.create)
-routes.get('/clientes/listar', ClientesController.list)
-routes.get('/clientes/encontrar/:id_cliente', ClientesController.find)
-routes.put('/clientes/atualizar/:id_cliente', ClientesController.update)
-routes.delete('/clientes/deletar/:id_cliente', ClientesController.delete)
+routes.post('/clientes/adicionar', CostumerController.create)
+routes.get('/clientes/listar', CostumerController.list)
+routes.get('/clientes/encontrar/:id_cliente', CostumerController.find)
+routes.put('/clientes/atualizar/:id_cliente', CostumerController.update)
+routes.delete('/clientes/deletar/:id_cliente', CostumerController.delete)
 
-routes.post('/clientes/carros/adicionar', CarrosController.create)
-routes.post('/clientes/carros/adicionar/:id_carros', CarrosController.createById)
-routes.get('/clientes/carros/listar', CarrosController.list)
-routes.get('/clientes/carros/encontrar/:id_carros', CarrosController.find)
-routes.put('/clientes/carros/atualizar/:id_carros', CarrosController.update)
-routes.delete('/clientes/carros/deletar/:id_carros', CarrosController.delete)
+routes.post('/carros/adicionar', CarController.create)
+routes.post('/carros/adicionar/:id_carros', CarController.createById)
+routes.get('/carros/listar', CarController.list)
+routes.get('/carros/encontrar/:id_carros', CarController.find)
+routes.put('/carros/atualizar/:id_carros', CarController.update)
+routes.delete('/carros/deletar/:id_carros', CarController.delete)
 
-routes.post('/clientes/ordemdeservico/adicionar', OsController.create)
-routes.get('/clientes/ordemdeservico/listar', OsController.list)
-routes.get('/clientes/ordemdeservico/encontrar/:id_os', OsController.find)
-routes.put('/cliente/ordemdeservico/atualizar/:id_os', OsController.update)
-routes.delete('/clientes/ordemdeservico/deletar/:id_os', OsController.delete)
+routes.post('/ordemdeservico/adicionar', ServiceOrderController.create)
+routes.get('/ordemdeservico/listar', ServiceOrderController.list)
+routes.get('/ordemdeservico/encontrar/:id_os', ServiceOrderController.find)
+routes.put('/ordemdeservico/atualizar/:id_os', ServiceOrderController.update)
+routes.delete('/ordemdeservico/deletar/:id_os', ServiceOrderController.delete)
 
-routes.post('/clientes/ordemdeservico/dtc/adicionar', DtcController.create)
-routes.get('/clientes/ordemdeservico/dtc/listar', DtcController.list)
-routes.get('/clientes/ordemdeservico/dtc/encontrar/:id_dtc', DtcController.find)
-routes.put('/cliente/ordemdeservico/dtc/atualizar/:id_dtc', DtcController.update)
-routes.delete('/clientes/ordemdeservico/dtc/deletar/:id_dtc', DtcController.delete)
+routes.post('/dtc/adicionar', DtcController.create)
+routes.get('/dtc/listar', DtcController.list)
+routes.get('/dtc/encontrar/:id_dtc', DtcController.find)
+routes.put('/dtc/atualizar/:id_dtc', DtcController.update)
+routes.delete('/dtc/deletar/:id_dtc', DtcController.delete)
 
 export default routes

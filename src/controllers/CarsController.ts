@@ -4,9 +4,9 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
-      await knex('carros').insert(data)
+      const { model, licensePlate, year, color, problem, idCostumer, entryDate } = req.body
+      const data = { model, licensePlate, year, color, problem, idCostumer, entryDate }
+      await knex('cars').insert(data)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
         data: data
@@ -20,10 +20,10 @@ export default {
 
   async createById(req: Request, res: Response) {
     try {
-      const { id_carros } = req.params
-      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
-      await knex('carros').insert(data).where(id_carros)
+      const { id } = req.params
+      const { model, licensePlate, year, color, problem, idCostumer, entryDate } = req.body
+      const data = { model, licensePlate, year, color, problem, idCostumer, entryDate }
+      await knex('cars').insert(data).where(id)
       return res.status(201).json({
         message: "Carro cadastrado com com sucesso!",
         data: data
@@ -37,8 +37,8 @@ export default {
 
   async list(req: Request, res: Response) {
     try {
-      const carros = await knex('carros').orderBy('id_carros')
-      return res.status(200).json(carros)
+      const cars = await knex('cars').orderBy('id')
+      return res.status(200).json(cars)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -48,9 +48,9 @@ export default {
 
   async find(req: Request, res: Response) {
     try {
-      const { id_cliente } = req.params
-      const carro = await knex('carros').where({ id_cliente })
-      return res.status(200).json(carro)
+      const { id } = req.params
+      const car = await knex('cars').where({ id })
+      return res.status(200).json(car)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -63,14 +63,14 @@ export default {
   async update(req: Request, res: Response) {
     try {
 
-      const { id_carros } = req.params
-      const { modelo, placa, ano, cor, problema, id_cliente, entrada } = req.body
-      const data = { modelo, placa, ano, cor, problema, id_cliente, entrada }
-      await knex('carros').update(data).where({ id_carros })
-      const carro = await knex('carros').where({ id_carros })
+      const { id } = req.params
+      const { model, licensePlate, year, color, problem, idCostumer, entryDate } = req.body
+      const data = { model, licensePlate, year, color, problem, idCostumer, entryDate }
+      await knex('cars').update(data).where({ id })
+      const car = await knex('cars').where({ id })
       return res.status(200).json({
         message: 'Dados atualizados com sucesso!',
-        carro
+        car
       })
     } catch (err: any) {
       return res.status(500).json({
@@ -81,8 +81,8 @@ export default {
 
   async delete(req: Request, res: Response) {
     try {
-      const { id_carros } = req.params
-      await knex('carros').delete().where({ id_carros })
+      const { id } = req.params
+      await knex('cars').delete().where({ id })
       return res.status(200).json({ message: "Carro excluido com sucesso!" })
     } catch (err: any) {
       return res.status(500).json({

@@ -4,9 +4,9 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { situacao, diagnostico, data_alteracao, mecanico, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, mecanico, id_carros }
-      await knex('ordens').insert(data)
+      const { situation, diagnosis, changeDate, mechanic, idCar } = req.body
+      const data = { situation, diagnosis, changeDate, mechanic, idCar}
+      await knex('service_orders').insert(data)
       return res.status(201).json({
         message: "Ordem de serviço cadastrada com com sucesso!",
         data: data
@@ -20,8 +20,8 @@ export default {
 
   async list(req: Request, res: Response) {
     try {
-      const ordemDesevicos = await knex('ordens').orderBy('id_os')
-      return res.status(200).json(ordemDesevicos)
+      const serviceOrders = await knex('service_orders').orderBy('id')
+      return res.status(200).json(serviceOrders)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -31,9 +31,9 @@ export default {
 
   async find(req: Request, res: Response) {
     try {
-      const { id_os } = req.params
-      const os = await knex('ordens').where({ id_os })
-      return res.status(200).json(os)
+      const { id } = req.params
+      const serviceOrder = await knex('service_orders').where({ id })
+      return res.status(200).json(serviceOrder)
     } catch (err: any) {
       return res.status(500).json({
         message: err.message
@@ -46,14 +46,14 @@ export default {
   async update(req: Request, res: Response) {
     try {
 
-      const { id_os } = req.params
-      const { situacao, diagnostico, data_alteracao, mecanico, id_carros } = req.body
-      const data = { situacao, diagnostico, data_alteracao, mecanico, id_carros }
-      await knex('ordens').update(data).where({ id_os })
-      const os = await knex('ordens').where({ id_os })
+      const { id } = req.params
+      const { situation, diagnosis, changeDate, mechanic, idCar } = req.body
+      const data = { situation, diagnosis, changeDate, mechanic, idCar }
+      await knex('service_orders').update(data).where({ id })
+      const serviceOrder = await knex('service_orders').where({ id })
       return res.status(200).json({
         message: 'Ordem de servico atualizada com sucesso!',
-        os
+        serviceOrder
       })
     } catch (err: any) {
       return res.status(500).json({
@@ -64,8 +64,8 @@ export default {
 
   async delete(req: Request, res: Response) {
     try {
-      const { id_os } = req.params
-      await knex('ordens').delete().where({ id_os })
+      const { id } = req.params
+      await knex('service_orders').delete().where({ id })
       return res.status(200).json({ message: "Ordem de servico excluida com sucesso!" })
     } catch (err: any) {
       return res.status(500).json({
