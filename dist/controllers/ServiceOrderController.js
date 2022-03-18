@@ -67,7 +67,8 @@ exports.default = {
                         }); });
                         return [2 /*return*/, res.status(201).json({
                                 message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
-                                data: data
+                                data: data,
+                                dataDtcs: dataDtcs
                             })];
                     case 2:
                         err_1 = _b.sent();

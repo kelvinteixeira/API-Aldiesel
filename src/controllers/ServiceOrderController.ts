@@ -13,7 +13,8 @@ export default {
       })
       return res.status(201).json({
         message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
-        data: data
+        data: data,
+        dataDtcs: dataDtcs
       })
     } catch (err: any) {
       return res.status(500).json({
