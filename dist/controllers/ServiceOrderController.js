@@ -43,18 +43,30 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, situation, diagnosis, changeDate, mechanic, idCar, data, err_1;
+            var _a, situation, diagnosis, changeDate, mechanic, idCar, code, dtc, dtcState, idServiceOrder, actions, data, dataDtcs, err_1;
+            var _this = this;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, situation = _a.situation, diagnosis = _a.diagnosis, changeDate = _a.changeDate, mechanic = _a.mechanic, idCar = _a.idCar;
+                        _a = req.body, situation = _a.situation, diagnosis = _a.diagnosis, changeDate = _a.changeDate, mechanic = _a.mechanic, idCar = _a.idCar, code = _a.code, dtc = _a.dtc, dtcState = _a.dtcState, idServiceOrder = _a.idServiceOrder, actions = _a.actions;
                         data = { situation: situation, diagnosis: diagnosis, changeDate: changeDate, mechanic: mechanic, idCar: idCar };
+                        dataDtcs = [{ code: code, dtc: dtc, dtcState: dtcState, idServiceOrder: idServiceOrder, actions: actions }];
                         return [4 /*yield*/, (0, connection_1.default)('service_orders').insert(data)];
                     case 1:
                         _b.sent();
+                        dataDtcs.map(function (data) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, connection_1.default)('dtcs').insert(data)];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); });
                         return [2 /*return*/, res.status(201).json({
-                                message: "Ordem de serviço cadastrada com com sucesso!",
+                                message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
                                 data: data
                             })];
                     case 2:

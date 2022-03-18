@@ -4,11 +4,15 @@ import knex from "../database/connection";
 export default {
   async create(req: Request, res: Response) {
     try {
-      const { situation, diagnosis, changeDate, mechanic, idCar } = req.body
-      const data = { situation, diagnosis, changeDate, mechanic, idCar}
+      const { situation, diagnosis, changeDate, mechanic, idCar, code, dtc, dtcState, idServiceOrder, actions } = req.body
+      const data = { situation, diagnosis, changeDate, mechanic, idCar }
+      const dataDtcs = [{ code, dtc, dtcState, idServiceOrder, actions }]
       await knex('service_orders').insert(data)
+      dataDtcs.map(async data => {
+        await knex('dtcs').insert(data);
+      })
       return res.status(201).json({
-        message: "Ordem de serviço cadastrada com com sucesso!",
+        message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
         data: data
       })
     } catch (err: any) {
