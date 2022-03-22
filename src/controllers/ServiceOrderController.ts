@@ -8,8 +8,10 @@ export default {
       const dataServiceOrder = { situation, diagnosis, changeDate, mechanic, idCar }
       await knex('service_orders').insert(dataServiceOrder)
 
-      const dataDtcs = { code, dtc, dtcState, idServiceOrder, actions }
-      await knex('dtcs').insert(dataDtcs);
+      const dataDtcs = [{ code, dtc, dtcState, idServiceOrder, actions }]
+      dataDtcs.map((item, index) => (
+         knex('dtcs').insert(item)
+        ))
 
       return res.status(201).json({
         message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
