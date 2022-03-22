@@ -5,17 +5,15 @@ export default {
   async create(req: Request, res: Response) {
     try {
       const { situation, diagnosis, changeDate, mechanic, idCar, code, dtc, dtcState, idServiceOrder, actions } = req.body
-      const data = { situation, diagnosis, changeDate, mechanic, idCar }
-      await knex('service_orders').insert(data)
+      const dataServiceOrder = { situation, diagnosis, changeDate, mechanic, idCar }
+      await knex('service_orders').insert(dataServiceOrder)
 
-      const dataDtcs = [{ code, dtc, dtcState, idServiceOrder, actions }]
-      dataDtcs.map(async items => {
-        await knex('dtcs').insert(items);
-      })
+      const dataDtcs = { code, dtc, dtcState, idServiceOrder, actions }
+      await knex('dtcs').insert(dataDtcs);
 
       return res.status(201).json({
         message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
-        data: data,
+        data: dataServiceOrder,
         dataDtcs: dataDtcs
       })
     } catch (err: any) {
