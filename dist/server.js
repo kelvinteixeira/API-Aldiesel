@@ -17,7 +17,7 @@ app.use(express_1.default.json());
 app.use(routes_1.default);
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.listen(PORT, function () {
-    console.log("Server is listening at http://localhost:" + PORT);
+    console.log("Server is listening at http://localhost:".concat(PORT));
 });
 app.get('/', function (req, res) {
     return res.json({

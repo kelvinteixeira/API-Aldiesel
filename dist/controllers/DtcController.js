@@ -43,75 +43,121 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, nome_cliente, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, problema_descricao, data;
+            var _a, codigo, dtc, estado, procedimentos, id_carro, data, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, nome_cliente = _a.nome_cliente, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, problema_descricao = _a.problema_descricao;
-                        data = { nome_cliente: nome_cliente, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, problema_descricao: problema_descricao };
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').insert(data)];
+                        _b.trys.push([0, 2, , 3]);
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, procedimentos = _a.procedimentos, id_carro = _a.id_carro;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, procedimentos: procedimentos, id_carro: id_carro };
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').insert(data)];
                     case 1:
                         _b.sent();
                         return [2 /*return*/, res.status(201).json({
-                                message: "Ordem de serviço criada com sucesso!",
+                                message: "DTCs cadastrados com com sucesso!",
                                 data: data
                             })];
+                    case 2:
+                        err_1 = _b.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_1.message
+                            })];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     },
     list: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var ordensDeServicos;
+            var ordemDesevicos, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').orderBy('id')];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').orderBy('id_dtc')];
                     case 1:
-                        ordensDeServicos = _a.sent();
-                        return [2 /*return*/, res.status(200).json(ordensDeServicos)];
+                        ordemDesevicos = _a.sent();
+                        return [2 /*return*/, res.status(200).json(ordemDesevicos)];
+                    case 2:
+                        err_2 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_2.message
+                            })];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     },
-    // async find(req: Request, res: Response) {
-    //   const { id } = req.params
-    //   const ordensDeServico = await knex('ordemDeServico').where({ id })
-    //   return res.status(200).json(ordensDeServico)
-    // },
+    find: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id_os, dtc, err_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        id_os = req.params.id_os;
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').where({ id_os: id_os })];
+                    case 1:
+                        dtc = _a.sent();
+                        return [2 /*return*/, res.status(200).json(dtc)];
+                    case 2:
+                        err_3 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_3.message
+                            })];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    },
     update: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome_cliente, nome_mecanico, carro_modelo, carro_ano, carro_placa, carro_cor, problema_descricao, data, ordensDeServico;
+            var id_dtc, _a, codigo, dtc, estado, procedimentos, id_carro, data, dtcs, err_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        id = req.params.id;
-                        _a = req.body, nome_cliente = _a.nome_cliente, nome_mecanico = _a.nome_mecanico, carro_modelo = _a.carro_modelo, carro_ano = _a.carro_ano, carro_placa = _a.carro_placa, carro_cor = _a.carro_cor, problema_descricao = _a.problema_descricao;
-                        data = { nome_cliente: nome_cliente, nome_mecanico: nome_mecanico, carro_modelo: carro_modelo, carro_ano: carro_ano, carro_placa: carro_placa, carro_cor: carro_cor, problema_descricao: problema_descricao };
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').update(data).where({ id: id })];
+                        _b.trys.push([0, 3, , 4]);
+                        id_dtc = req.params.id_dtc;
+                        _a = req.body, codigo = _a.codigo, dtc = _a.dtc, estado = _a.estado, procedimentos = _a.procedimentos, id_carro = _a.id_carro;
+                        data = { codigo: codigo, dtc: dtc, estado: estado, procedimentos: procedimentos, id_carro: id_carro };
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').update(data).where({ id_dtc: id_dtc })];
                     case 1:
                         _b.sent();
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').where({ id: id })];
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').where({ id_dtc: id_dtc })];
                     case 2:
-                        ordensDeServico = _b.sent();
+                        dtcs = _b.sent();
                         return [2 /*return*/, res.status(200).json({
-                                message: 'Alterado com sucesso em ' + new Date().toISOString(),
-                                ordensDeServico: ordensDeServico
+                                message: 'DTCs atualizados com sucesso!',
+                                dtcs: dtcs
                             })];
+                    case 3:
+                        err_4 = _b.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_4.message
+                            })];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     },
     delete: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id;
+            var id_dtc, err_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        id = req.params.id;
-                        return [4 /*yield*/, (0, connection_1.default)('ordemdeservico').delete().where({ id: id })];
+                        _a.trys.push([0, 2, , 3]);
+                        id_dtc = req.params.id_dtc;
+                        return [4 /*yield*/, (0, connection_1.default)('dtcs').delete().where({ id_dtc: id_dtc })];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/, res.status(200).json({ message: "Ordem de serviço excluida com sucesso!" })];
+                        return [2 /*return*/, res.status(200).json({ message: "DTCs excluidos com sucesso!" })];
+                    case 2:
+                        err_5 = _a.sent();
+                        return [2 /*return*/, res.status(500).json({
+                                message: err_5.message
+                            })];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
