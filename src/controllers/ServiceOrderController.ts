@@ -8,7 +8,7 @@ export default {
       const dataServiceOrder = { situation, diagnosis, changeDate, mechanic, idCar }
       await knex('service_orders').insert(dataServiceOrder)
 
-      const dataDtcs = { code: [{ code, dtc, dtcState, idServiceOrder, actions }] }
+      const dataDtcs = { code, dtc, dtcState, idServiceOrder, actions }
       knex('dtcs').insert(dataDtcs)
         
 

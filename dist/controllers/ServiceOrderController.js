@@ -53,7 +53,7 @@ exports.default = {
                         return [4 /*yield*/, (0, connection_1.default)('service_orders').insert(dataServiceOrder)];
                     case 1:
                         _b.sent();
-                        dataDtcs = { code: [{ code: code, dtc: dtc, dtcState: dtcState, idServiceOrder: idServiceOrder, actions: actions }] };
+                        dataDtcs = { code: code, dtc: dtc, dtcState: dtcState, idServiceOrder: idServiceOrder, actions: actions };
                         (0, connection_1.default)('dtcs').insert(dataDtcs);
                         return [2 /*return*/, res.status(201).json({
                                 message: "Ordem de serviço e Dtcs cadastrados com sucesso!",
