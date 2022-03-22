@@ -5,11 +5,11 @@ export default {
   async create(req: Request, res: Response) {
     try {
       const { name, phone, street, houseNumber, district, city, state, entryDate  } = req.body
-      const data = { name, phone, street, houseNumber, district, city, state, entryDate }
-      await knex('costumers').insert(data)
+      const dataCostumer = { name, phone, street, houseNumber, district, city, state, entryDate }
+      await knex('costumers').insert(dataCostumer)
       return res.status(201).json({
         message: "Cliente cadastrado com com sucesso!",
-        data: data
+        data: dataCostumer
       })
     } catch (err: any) {
       return res.status(500).json({
@@ -21,7 +21,13 @@ export default {
   async list(req: Request, res: Response) {
     try {
       const costumers = await knex('costumers').orderBy('id')
-      return res.status(200).json(costumers)
+      const cars = await knex('cars').orderBy('id')
+      const serviceOrders = await knex('service_orders').orderBy('id')
+      return res.status(200).json({
+          costumers,
+          cars,
+          serviceOrders
+      })
     } catch (err: any) {
       return res.status(500).json({
         message: err.message

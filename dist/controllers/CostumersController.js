@@ -43,19 +43,19 @@ var connection_1 = __importDefault(require("../database/connection"));
 exports.default = {
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, name_1, phone, street, houseNumber, district, city, state, entryDate, data, err_1;
+            var _a, name_1, phone, street, houseNumber, district, city, state, entryDate, dataCostumer, err_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
                         _a = req.body, name_1 = _a.name, phone = _a.phone, street = _a.street, houseNumber = _a.houseNumber, district = _a.district, city = _a.city, state = _a.state, entryDate = _a.entryDate;
-                        data = { name: name_1, phone: phone, street: street, houseNumber: houseNumber, district: district, city: city, state: state, entryDate: entryDate };
-                        return [4 /*yield*/, (0, connection_1.default)('costumers').insert(data)];
+                        dataCostumer = { name: name_1, phone: phone, street: street, houseNumber: houseNumber, district: district, city: city, state: state, entryDate: entryDate };
+                        return [4 /*yield*/, (0, connection_1.default)('costumers').insert(dataCostumer)];
                     case 1:
                         _b.sent();
                         return [2 /*return*/, res.status(201).json({
                                 message: "Cliente cadastrado com com sucesso!",
-                                data: data
+                                data: dataCostumer
                             })];
                     case 2:
                         err_1 = _b.sent();
@@ -69,21 +69,31 @@ exports.default = {
     },
     list: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var costumers, err_2;
+            var costumers, cars, serviceOrders, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 4, , 5]);
                         return [4 /*yield*/, (0, connection_1.default)('costumers').orderBy('id')];
                     case 1:
                         costumers = _a.sent();
-                        return [2 /*return*/, res.status(200).json(costumers)];
+                        return [4 /*yield*/, (0, connection_1.default)('cars').orderBy('id')];
                     case 2:
+                        cars = _a.sent();
+                        return [4 /*yield*/, (0, connection_1.default)('service_orders').orderBy('id')];
+                    case 3:
+                        serviceOrders = _a.sent();
+                        return [2 /*return*/, res.status(200).json({
+                                costumers: costumers,
+                                cars: cars,
+                                serviceOrders: serviceOrders
+                            })];
+                    case 4:
                         err_2 = _a.sent();
                         return [2 /*return*/, res.status(500).json({
                                 message: err_2.message
                             })];
-                    case 3: return [2 /*return*/];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
